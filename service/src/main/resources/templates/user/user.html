@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div th:insert="~{fragment :: header}"></div>
+<div style="margin-left: 20px;margin-right: 20px;">
+    <h1 style="color: blueviolet">User details</h1>
+    <div>
+        <b><span>Name: </span></b>
+        <span th:text="${user.name}"></span> <br>
+        <b><span>Email: </span></b>
+        <span th:text="${user.email}"></span> <br>
+        <b><span>Birthdate: </span></b>
+        <span th:text="${user.birthdate}"></span> <br>
+        <b><span>Gender: </span></b>
+        <span th:text="${user.gender}"></span> <br>
+        <b><span>Role: </span></b>
+        <span th:text="${user.role}"></span> <br>
+    </div>
+    <h2 style="align-content:center;color: blueviolet">Reviews</h2>
+    <div>
+        <table>
+            <tr>
+                <th>Rate</th>
+                <th>Text</th>
+                <th>User Name</th>
+            </tr>
+            <tr th:each="review: ${reviews}">
+                <td>
+                    <a th:href="@{'/movies/' + ${review.movie.id}}" th:text="${review.movie.title}">text</a>
+                </td>
+                <td th:text="${review.rate}">text</td>
+                <td th:text="${review.text}">text</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
